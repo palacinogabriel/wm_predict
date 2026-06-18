@@ -908,7 +908,7 @@ def generate_website(
 
 <body>
     <header>
-        <h1>World Cup Knockout Predictor</h1>
+        <h1>World Cup Predictor</h1>
         <p>
             Current group standings and a projected knockout bracket. 
             Knockout winners are selected by best FIFA ranking, where a lower ranking number is better.
