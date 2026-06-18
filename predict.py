@@ -940,9 +940,7 @@ def generate_website(
         </section>
 
         <div class="note">
-            This page is generated from manually maintained standings. 
-            Group ties beyond points, goal difference, and goals scored preserve the listed input order.
-            Best third-place fallback uses FIFA ranking when fair-play points or drawing lots are unavailable.
+            Best third-place fallback uses FIFA ranking when fair-play points are unavailable.
         </div>
 
         <section id="standings" class="section-block">
