@@ -53,16 +53,16 @@
         .summary-card span { display:block; color:var(--muted); font-size:0.9rem; margin-bottom:8px; }
         .summary-card strong { display:block; font-size:1.5rem; line-height:1.2; color:var(--accent); }
         .note { background:rgba(249,115,22,0.09); border:1px solid rgba(249,115,22,0.4); color:#fed7aa; border-radius:18px; padding:18px; margin-bottom:36px; }
-        .note-small { color:var(--muted); font-size:0.9rem; margin-top:-10px; margin-bottom:16px; }
         .group-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
         .card { background:rgba(17,24,39,0.92); border:1px solid var(--border); border-radius:18px; padding:18px; overflow:hidden; }
         table { width:100%; border-collapse:collapse; font-size:0.92rem; }
         th, td { padding:9px 7px; border-bottom:1px solid var(--border); text-align:left; white-space:nowrap; }
         th { color:var(--muted); font-weight:650; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; }
         td.team-name { white-space:normal; font-weight:650; }
-        td.prob-cell { color:var(--accent); font-weight:600; }
         tr:last-child td { border-bottom:0; }
-        .odds-table-wrap { max-width:480px; }
+        .explainer { max-width: 780px; }
+        .explainer p { color:var(--muted); margin: 0 0 16px; font-size:0.95rem; }
+        .explainer strong { color:var(--text); }
         .bracket-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:16px; }
         .match-card { background:rgba(17,24,39,0.92); border:1px solid var(--border); border-radius:18px; padding:16px; }
         .match-number { color:var(--muted); font-size:0.82rem; margin-bottom:10px; letter-spacing:0.04em; text-transform:uppercase; }
@@ -88,13 +88,12 @@
     </style>
 </head>
 <body>
-    <div style="background:var(--panel);border-bottom:1px solid var(--border);padding:6px 16px;font-size:0.8rem;color:var(--muted);text-align:right;">Last updated: 2026-06-19 08:43:05 UTC</div>
+    <div style="background:var(--panel);border-bottom:1px solid var(--border);padding:6px 16px;font-size:0.8rem;color:var(--muted);text-align:right;">Last updated: 2026-06-19 09:05:19 UTC</div>
     <header>
         <h1>World Cup Predictor</h1>
-        <p>Knockout bracket projected using Odds Probability. Group standings updated in real-time.</p>
+        <p>Knockout bracket projected from bookmaker odds. Group standings fetched live from Wikipedia.</p>
         <nav>
             <a href="#standings">Standings</a>
-            <a href="#odds">Win Odds</a>
             <a href="#round-of-32">Bracket</a>
             <a href="#final">Final</a>
         </nav>
@@ -107,10 +106,6 @@
                 <strong>France &mdash; 17.7%</strong>
             </div>
             <div class="summary-card">
-                <span>Prediction Method</span>
-                <strong>Odds Probability</strong>
-            </div>
-            <div class="summary-card">
                 <span>Qualifying Third-Place Groups</span>
                 <strong>A, B, C, E, F, G, H, K</strong>
             </div>
@@ -121,21 +116,8 @@
         </section>
 
         <div class="note">
-            Winners determined by highest vig-removed odds probability. Falls back to FIFA ranking when odds are unavailable.
+            Standings are updated every 30 minutes, predictions twice a day at 08:00 CEST and 17:00 CEST.
         </div>
-
-        
-            <section class="section-block" id="odds">
-                <h2>Outright Win Probabilities</h2>
-                <p class="note-small">Vig-removed average across bookmakers</p>
-                <div class="odds-table-wrap">
-                    <table>
-                        <thead><tr><th>#</th><th>Team</th><th>Win%</th></tr></thead>
-                        <tbody><tr><td>1</td><td class='team-name'>France</td><td class='prob-cell'>17.7%</td></tr><tr><td>2</td><td class='team-name'>Spain</td><td class='prob-cell'>13.2%</td></tr><tr><td>3</td><td class='team-name'>England</td><td class='prob-cell'>12.2%</td></tr><tr><td>4</td><td class='team-name'>Argentina</td><td class='prob-cell'>9.3%</td></tr><tr><td>5</td><td class='team-name'>Portugal</td><td class='prob-cell'>7.4%</td></tr><tr><td>6</td><td class='team-name'>Brazil</td><td class='prob-cell'>6.7%</td></tr><tr><td>7</td><td class='team-name'>Germany</td><td class='prob-cell'>5.6%</td></tr><tr><td>8</td><td class='team-name'>Netherlands</td><td class='prob-cell'>3.9%</td></tr><tr><td>9</td><td class='team-name'>Norway</td><td class='prob-cell'>2.5%</td></tr><tr><td>10</td><td class='team-name'>Morocco</td><td class='prob-cell'>2.2%</td></tr><tr><td>11</td><td class='team-name'>United States</td><td class='prob-cell'>2.0%</td></tr><tr><td>12</td><td class='team-name'>Belgium</td><td class='prob-cell'>1.9%</td></tr><tr><td>13</td><td class='team-name'>Japan</td><td class='prob-cell'>1.7%</td></tr><tr><td>14</td><td class='team-name'>Mexico</td><td class='prob-cell'>1.7%</td></tr><tr><td>15</td><td class='team-name'>Colombia</td><td class='prob-cell'>1.7%</td></tr><tr><td>16</td><td class='team-name'>Switzerland</td><td class='prob-cell'>1.0%</td></tr><tr><td>17</td><td class='team-name'>Uruguay</td><td class='prob-cell'>0.8%</td></tr><tr><td>18</td><td class='team-name'>Croatia</td><td class='prob-cell'>0.8%</td></tr><tr><td>19</td><td class='team-name'>Australia</td><td class='prob-cell'>0.7%</td></tr><tr><td>20</td><td class='team-name'>Sweden</td><td class='prob-cell'>0.7%</td></tr><tr><td>21</td><td class='team-name'>Senegal</td><td class='prob-cell'>0.7%</td></tr><tr><td>22</td><td class='team-name'>Austria</td><td class='prob-cell'>0.6%</td></tr><tr><td>23</td><td class='team-name'>Canada</td><td class='prob-cell'>0.6%</td></tr><tr><td>24</td><td class='team-name'>Ecuador</td><td class='prob-cell'>0.5%</td></tr><tr><td>25</td><td class='team-name'>Turkiye</td><td class='prob-cell'>0.5%</td></tr><tr><td>26</td><td class='team-name'>Ivory Coast</td><td class='prob-cell'>0.5%</td></tr><tr><td>27</td><td class='team-name'>Korea Republic</td><td class='prob-cell'>0.3%</td></tr><tr><td>28</td><td class='team-name'>Scotland</td><td class='prob-cell'>0.3%</td></tr><tr><td>29</td><td class='team-name'>Egypt</td><td class='prob-cell'>0.3%</td></tr><tr><td>30</td><td class='team-name'>Ghana</td><td class='prob-cell'>0.2%</td></tr><tr><td>31</td><td class='team-name'>Bosnia and Herzegovina</td><td class='prob-cell'>0.2%</td></tr><tr><td>32</td><td class='team-name'>Algeria</td><td class='prob-cell'>0.2%</td></tr><tr><td>33</td><td class='team-name'>Paraguay</td><td class='prob-cell'>0.2%</td></tr><tr><td>34</td><td class='team-name'>Tunisia</td><td class='prob-cell'>0.1%</td></tr><tr><td>35</td><td class='team-name'>Iran</td><td class='prob-cell'>0.1%</td></tr><tr><td>36</td><td class='team-name'>Czechia</td><td class='prob-cell'>0.1%</td></tr><tr><td>37</td><td class='team-name'>Congo DR</td><td class='prob-cell'>0.1%</td></tr><tr><td>38</td><td class='team-name'>Saudi Arabia</td><td class='prob-cell'>0.1%</td></tr><tr><td>39</td><td class='team-name'>New Zealand</td><td class='prob-cell'>0.1%</td></tr><tr><td>40</td><td class='team-name'>Qatar</td><td class='prob-cell'>0.1%</td></tr><tr><td>41</td><td class='team-name'>Cape Verde</td><td class='prob-cell'>0.1%</td></tr><tr><td>42</td><td class='team-name'>South Africa</td><td class='prob-cell'>0.1%</td></tr><tr><td>43</td><td class='team-name'>Curaçao</td><td class='prob-cell'>0.1%</td></tr><tr><td>44</td><td class='team-name'>Uzbekistan</td><td class='prob-cell'>0.1%</td></tr><tr><td>45</td><td class='team-name'>Iraq</td><td class='prob-cell'>0.1%</td></tr><tr><td>46</td><td class='team-name'>Panama</td><td class='prob-cell'>0.1%</td></tr><tr><td>47</td><td class='team-name'>Jordan</td><td class='prob-cell'>0.1%</td></tr><tr><td>48</td><td class='team-name'>Haiti</td><td class='prob-cell'>0.1%</td></tr></tbody>
-                    </table>
-                </div>
-            </section>
-        
 
         <section id="standings" class="section-block">
             <h2>Group Standings</h2>
@@ -147,18 +129,16 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
                 <tr>
                     <td>1</td>
                     <td class="team-name">Mexico</td>
+                    <td>6</td>
                     <td>3</td>
-                    <td>2</td>
                     <td>0</td>
-                    <td>+2</td>
-                    <td class="prob-cell">1.7%</td>
+                    <td>+3</td>
                 </tr>
             
                 <tr>
@@ -166,29 +146,26 @@
                     <td class="team-name">Korea Republic</td>
                     <td>3</td>
                     <td>2</td>
-                    <td>1</td>
-                    <td>+1</td>
-                    <td class="prob-cell">0.3%</td>
+                    <td>2</td>
+                    <td>+0</td>
                 </tr>
             
                 <tr>
                     <td>3</td>
                     <td class="team-name">Czechia</td>
-                    <td>0</td>
                     <td>1</td>
                     <td>2</td>
+                    <td>3</td>
                     <td>-1</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             
                 <tr>
                     <td>4</td>
                     <td class="team-name">South Africa</td>
-                    <td>0</td>
-                    <td>0</td>
-                    <td>2</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>3</td>
                     <td>-2</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             </tbody>
                 </table>
@@ -202,48 +179,43 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
                 <tr>
                     <td>1</td>
-                    <td class="team-name">Switzerland</td>
+                    <td class="team-name">Canada</td>
+                    <td>4</td>
+                    <td>7</td>
                     <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>+0</td>
-                    <td class="prob-cell">1.0%</td>
+                    <td>+6</td>
                 </tr>
             
                 <tr>
                     <td>2</td>
-                    <td class="team-name">Canada</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>+0</td>
-                    <td class="prob-cell">0.6%</td>
+                    <td class="team-name">Switzerland</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>2</td>
+                    <td>+3</td>
                 </tr>
             
                 <tr>
                     <td>3</td>
-                    <td class="team-name">Qatar</td>
+                    <td class="team-name">Bosnia and Herzegovina</td>
                     <td>1</td>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>+0</td>
-                    <td class="prob-cell">0.1%</td>
+                    <td>2</td>
+                    <td>5</td>
+                    <td>-3</td>
                 </tr>
             
                 <tr>
                     <td>4</td>
-                    <td class="team-name">Bosnia and Herzegovina</td>
+                    <td class="team-name">Qatar</td>
                     <td>1</td>
                     <td>1</td>
-                    <td>1</td>
-                    <td>+0</td>
-                    <td class="prob-cell">0.2%</td>
+                    <td>7</td>
+                    <td>-6</td>
                 </tr>
             </tbody>
                 </table>
@@ -257,7 +229,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -268,7 +239,6 @@
                     <td>1</td>
                     <td>0</td>
                     <td>+1</td>
-                    <td class="prob-cell">0.3%</td>
                 </tr>
             
                 <tr>
@@ -278,7 +248,6 @@
                     <td>1</td>
                     <td>1</td>
                     <td>+0</td>
-                    <td class="prob-cell">2.2%</td>
                 </tr>
             
                 <tr>
@@ -288,7 +257,6 @@
                     <td>1</td>
                     <td>1</td>
                     <td>+0</td>
-                    <td class="prob-cell">6.7%</td>
                 </tr>
             
                 <tr>
@@ -298,7 +266,6 @@
                     <td>0</td>
                     <td>1</td>
                     <td>-1</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             </tbody>
                 </table>
@@ -312,7 +279,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -323,7 +289,6 @@
                     <td>4</td>
                     <td>1</td>
                     <td>+3</td>
-                    <td class="prob-cell">2.0%</td>
                 </tr>
             
                 <tr>
@@ -333,7 +298,6 @@
                     <td>2</td>
                     <td>0</td>
                     <td>+2</td>
-                    <td class="prob-cell">0.7%</td>
                 </tr>
             
                 <tr>
@@ -343,7 +307,6 @@
                     <td>0</td>
                     <td>2</td>
                     <td>-2</td>
-                    <td class="prob-cell">0.5%</td>
                 </tr>
             
                 <tr>
@@ -353,7 +316,6 @@
                     <td>1</td>
                     <td>4</td>
                     <td>-3</td>
-                    <td class="prob-cell">0.2%</td>
                 </tr>
             </tbody>
                 </table>
@@ -367,7 +329,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -378,7 +339,6 @@
                     <td>7</td>
                     <td>1</td>
                     <td>+6</td>
-                    <td class="prob-cell">5.6%</td>
                 </tr>
             
                 <tr>
@@ -388,7 +348,6 @@
                     <td>1</td>
                     <td>0</td>
                     <td>+1</td>
-                    <td class="prob-cell">0.5%</td>
                 </tr>
             
                 <tr>
@@ -398,7 +357,6 @@
                     <td>0</td>
                     <td>1</td>
                     <td>-1</td>
-                    <td class="prob-cell">0.5%</td>
                 </tr>
             
                 <tr>
@@ -408,7 +366,6 @@
                     <td>1</td>
                     <td>7</td>
                     <td>-6</td>
-                    <td class="prob-cell">—</td>
                 </tr>
             </tbody>
                 </table>
@@ -422,7 +379,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -433,7 +389,6 @@
                     <td>5</td>
                     <td>1</td>
                     <td>+4</td>
-                    <td class="prob-cell">0.7%</td>
                 </tr>
             
                 <tr>
@@ -443,7 +398,6 @@
                     <td>2</td>
                     <td>2</td>
                     <td>+0</td>
-                    <td class="prob-cell">1.7%</td>
                 </tr>
             
                 <tr>
@@ -453,7 +407,6 @@
                     <td>2</td>
                     <td>2</td>
                     <td>+0</td>
-                    <td class="prob-cell">3.9%</td>
                 </tr>
             
                 <tr>
@@ -463,7 +416,6 @@
                     <td>1</td>
                     <td>5</td>
                     <td>-4</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             </tbody>
                 </table>
@@ -477,7 +429,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -488,7 +439,6 @@
                     <td>2</td>
                     <td>2</td>
                     <td>+0</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             
                 <tr>
@@ -498,7 +448,6 @@
                     <td>2</td>
                     <td>2</td>
                     <td>+0</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             
                 <tr>
@@ -508,7 +457,6 @@
                     <td>1</td>
                     <td>1</td>
                     <td>+0</td>
-                    <td class="prob-cell">1.9%</td>
                 </tr>
             
                 <tr>
@@ -518,7 +466,6 @@
                     <td>1</td>
                     <td>1</td>
                     <td>+0</td>
-                    <td class="prob-cell">0.3%</td>
                 </tr>
             </tbody>
                 </table>
@@ -532,7 +479,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -543,7 +489,6 @@
                     <td>1</td>
                     <td>1</td>
                     <td>+0</td>
-                    <td class="prob-cell">0.8%</td>
                 </tr>
             
                 <tr>
@@ -553,7 +498,6 @@
                     <td>1</td>
                     <td>1</td>
                     <td>+0</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             
                 <tr>
@@ -563,7 +507,6 @@
                     <td>0</td>
                     <td>0</td>
                     <td>+0</td>
-                    <td class="prob-cell">13.2%</td>
                 </tr>
             
                 <tr>
@@ -573,7 +516,6 @@
                     <td>0</td>
                     <td>0</td>
                     <td>+0</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             </tbody>
                 </table>
@@ -587,7 +529,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -598,7 +539,6 @@
                     <td>4</td>
                     <td>1</td>
                     <td>+3</td>
-                    <td class="prob-cell">2.5%</td>
                 </tr>
             
                 <tr>
@@ -608,7 +548,6 @@
                     <td>3</td>
                     <td>1</td>
                     <td>+2</td>
-                    <td class="prob-cell">17.7%</td>
                 </tr>
             
                 <tr>
@@ -618,7 +557,6 @@
                     <td>1</td>
                     <td>3</td>
                     <td>-2</td>
-                    <td class="prob-cell">0.7%</td>
                 </tr>
             
                 <tr>
@@ -628,7 +566,6 @@
                     <td>1</td>
                     <td>4</td>
                     <td>-3</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             </tbody>
                 </table>
@@ -642,7 +579,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -653,7 +589,6 @@
                     <td>3</td>
                     <td>0</td>
                     <td>+3</td>
-                    <td class="prob-cell">9.3%</td>
                 </tr>
             
                 <tr>
@@ -663,7 +598,6 @@
                     <td>3</td>
                     <td>1</td>
                     <td>+2</td>
-                    <td class="prob-cell">0.6%</td>
                 </tr>
             
                 <tr>
@@ -673,7 +607,6 @@
                     <td>1</td>
                     <td>3</td>
                     <td>-2</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             
                 <tr>
@@ -683,7 +616,6 @@
                     <td>0</td>
                     <td>3</td>
                     <td>-3</td>
-                    <td class="prob-cell">0.2%</td>
                 </tr>
             </tbody>
                 </table>
@@ -697,7 +629,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -708,7 +639,6 @@
                     <td>3</td>
                     <td>1</td>
                     <td>+2</td>
-                    <td class="prob-cell">1.7%</td>
                 </tr>
             
                 <tr>
@@ -718,7 +648,6 @@
                     <td>1</td>
                     <td>1</td>
                     <td>+0</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             
                 <tr>
@@ -728,7 +657,6 @@
                     <td>1</td>
                     <td>1</td>
                     <td>+0</td>
-                    <td class="prob-cell">7.4%</td>
                 </tr>
             
                 <tr>
@@ -738,7 +666,6 @@
                     <td>1</td>
                     <td>3</td>
                     <td>-2</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             </tbody>
                 </table>
@@ -752,7 +679,6 @@
                         <tr>
                             <th>Pos</th><th>Team</th><th>Pts</th>
                             <th>GF</th><th>GA</th><th>GD</th>
-                            <th>Win%</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -763,7 +689,6 @@
                     <td>4</td>
                     <td>2</td>
                     <td>+2</td>
-                    <td class="prob-cell">12.2%</td>
                 </tr>
             
                 <tr>
@@ -773,7 +698,6 @@
                     <td>1</td>
                     <td>0</td>
                     <td>+1</td>
-                    <td class="prob-cell">0.2%</td>
                 </tr>
             
                 <tr>
@@ -783,7 +707,6 @@
                     <td>0</td>
                     <td>1</td>
                     <td>-1</td>
-                    <td class="prob-cell">0.1%</td>
                 </tr>
             
                 <tr>
@@ -793,7 +716,6 @@
                     <td>2</td>
                     <td>4</td>
                     <td>-2</td>
-                    <td class="prob-cell">0.8%</td>
                 </tr>
             </tbody>
                 </table>
@@ -809,13 +731,11 @@
                 <div class="match-number">M73</div>
                 <div class="match-row ">
                     <span>Korea Republic</span>
-                    <small class="prob">0.3%</small>
                 </div>
                 <div class="match-row winner">
-                    <span>Canada</span>
-                    <small class="prob">0.6%</small>
+                    <span>Switzerland</span>
                 </div>
-                <div class="winner-label">Winner: <strong>Canada</strong></div>
+                <div class="winner-label">Winner: <strong>Switzerland</strong></div>
             </article>
         
 
@@ -823,11 +743,9 @@
                 <div class="match-number">M74</div>
                 <div class="match-row ">
                     <span>Germany</span>
-                    <small class="prob">5.6%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Brazil</span>
-                    <small class="prob">6.7%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Brazil</strong></div>
             </article>
@@ -837,11 +755,9 @@
                 <div class="match-number">M75</div>
                 <div class="match-row ">
                     <span>Sweden</span>
-                    <small class="prob">0.7%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Morocco</span>
-                    <small class="prob">2.2%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Morocco</strong></div>
             </article>
@@ -851,11 +767,9 @@
                 <div class="match-number">M76</div>
                 <div class="match-row ">
                     <span>Scotland</span>
-                    <small class="prob">0.3%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Japan</span>
-                    <small class="prob">1.7%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Japan</strong></div>
             </article>
@@ -865,11 +779,9 @@
                 <div class="match-number">M77</div>
                 <div class="match-row ">
                     <span>Norway</span>
-                    <small class="prob">2.5%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Netherlands</span>
-                    <small class="prob">3.9%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Netherlands</strong></div>
             </article>
@@ -879,11 +791,9 @@
                 <div class="match-number">M78</div>
                 <div class="match-row ">
                     <span>Ivory Coast</span>
-                    <small class="prob">0.5%</small>
                 </div>
                 <div class="match-row winner">
                     <span>France</span>
-                    <small class="prob">17.7%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>France</strong></div>
             </article>
@@ -893,11 +803,9 @@
                 <div class="match-number">M79</div>
                 <div class="match-row ">
                     <span>Mexico</span>
-                    <small class="prob">1.7%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Spain</span>
-                    <small class="prob">13.2%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Spain</strong></div>
             </article>
@@ -907,11 +815,9 @@
                 <div class="match-number">M80</div>
                 <div class="match-row winner">
                     <span>England</span>
-                    <small class="prob">12.2%</small>
                 </div>
                 <div class="match-row ">
                     <span>Portugal</span>
-                    <small class="prob">7.4%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>England</strong></div>
             </article>
@@ -921,11 +827,9 @@
                 <div class="match-number">M81</div>
                 <div class="match-row winner">
                     <span>United States</span>
-                    <small class="prob">2.0%</small>
                 </div>
                 <div class="match-row ">
-                    <span>Qatar</span>
-                    <small class="prob">0.1%</small>
+                    <span>Bosnia and Herzegovina</span>
                 </div>
                 <div class="winner-label">Winner: <strong>United States</strong></div>
             </article>
@@ -935,11 +839,9 @@
                 <div class="match-number">M82</div>
                 <div class="match-row ">
                     <span>New Zealand</span>
-                    <small class="prob">0.1%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Czechia</span>
-                    <small class="prob">0.1%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Czechia</strong></div>
             </article>
@@ -949,11 +851,9 @@
                 <div class="match-number">M83</div>
                 <div class="match-row ">
                     <span>Congo DR</span>
-                    <small class="prob">0.1%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Ghana</span>
-                    <small class="prob">0.2%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Ghana</strong></div>
             </article>
@@ -963,11 +863,9 @@
                 <div class="match-number">M84</div>
                 <div class="match-row winner">
                     <span>Uruguay</span>
-                    <small class="prob">0.8%</small>
                 </div>
                 <div class="match-row ">
                     <span>Austria</span>
-                    <small class="prob">0.6%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Uruguay</strong></div>
             </article>
@@ -976,12 +874,10 @@
             <article class="match-card">
                 <div class="match-number">M85</div>
                 <div class="match-row ">
-                    <span>Switzerland</span>
-                    <small class="prob">1.0%</small>
+                    <span>Canada</span>
                 </div>
                 <div class="match-row winner">
                     <span>Belgium</span>
-                    <small class="prob">1.9%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Belgium</strong></div>
             </article>
@@ -991,11 +887,9 @@
                 <div class="match-number">M86</div>
                 <div class="match-row winner">
                     <span>Argentina</span>
-                    <small class="prob">9.3%</small>
                 </div>
                 <div class="match-row ">
                     <span>Saudi Arabia</span>
-                    <small class="prob">0.1%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Argentina</strong></div>
             </article>
@@ -1005,11 +899,9 @@
                 <div class="match-number">M87</div>
                 <div class="match-row winner">
                     <span>Colombia</span>
-                    <small class="prob">1.7%</small>
                 </div>
                 <div class="match-row ">
                     <span>Ecuador</span>
-                    <small class="prob">0.5%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Colombia</strong></div>
             </article>
@@ -1019,11 +911,9 @@
                 <div class="match-number">M88</div>
                 <div class="match-row winner">
                     <span>Australia</span>
-                    <small class="prob">0.7%</small>
                 </div>
                 <div class="match-row ">
                     <span>Iran</span>
-                    <small class="prob">0.1%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Australia</strong></div>
             </article>
@@ -1037,12 +927,10 @@
             <article class="match-card">
                 <div class="match-number">M89</div>
                 <div class="match-row ">
-                    <span>Canada</span>
-                    <small class="prob">0.6%</small>
+                    <span>Switzerland</span>
                 </div>
                 <div class="match-row winner">
                     <span>Morocco</span>
-                    <small class="prob">2.2%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Morocco</strong></div>
             </article>
@@ -1052,11 +940,9 @@
                 <div class="match-number">M90</div>
                 <div class="match-row winner">
                     <span>Brazil</span>
-                    <small class="prob">6.7%</small>
                 </div>
                 <div class="match-row ">
                     <span>Netherlands</span>
-                    <small class="prob">3.9%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Brazil</strong></div>
             </article>
@@ -1066,11 +952,9 @@
                 <div class="match-number">M91</div>
                 <div class="match-row ">
                     <span>Japan</span>
-                    <small class="prob">1.7%</small>
                 </div>
                 <div class="match-row winner">
                     <span>France</span>
-                    <small class="prob">17.7%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>France</strong></div>
             </article>
@@ -1080,11 +964,9 @@
                 <div class="match-number">M92</div>
                 <div class="match-row winner">
                     <span>Spain</span>
-                    <small class="prob">13.2%</small>
                 </div>
                 <div class="match-row ">
                     <span>England</span>
-                    <small class="prob">12.2%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Spain</strong></div>
             </article>
@@ -1094,11 +976,9 @@
                 <div class="match-number">M93</div>
                 <div class="match-row ">
                     <span>Ghana</span>
-                    <small class="prob">0.2%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Uruguay</span>
-                    <small class="prob">0.8%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Uruguay</strong></div>
             </article>
@@ -1108,11 +988,9 @@
                 <div class="match-number">M94</div>
                 <div class="match-row winner">
                     <span>United States</span>
-                    <small class="prob">2.0%</small>
                 </div>
                 <div class="match-row ">
                     <span>Czechia</span>
-                    <small class="prob">0.1%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>United States</strong></div>
             </article>
@@ -1122,11 +1000,9 @@
                 <div class="match-number">M95</div>
                 <div class="match-row winner">
                     <span>Argentina</span>
-                    <small class="prob">9.3%</small>
                 </div>
                 <div class="match-row ">
                     <span>Australia</span>
-                    <small class="prob">0.7%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Argentina</strong></div>
             </article>
@@ -1136,11 +1012,9 @@
                 <div class="match-number">M96</div>
                 <div class="match-row winner">
                     <span>Belgium</span>
-                    <small class="prob">1.9%</small>
                 </div>
                 <div class="match-row ">
                     <span>Colombia</span>
-                    <small class="prob">1.7%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Belgium</strong></div>
             </article>
@@ -1155,11 +1029,9 @@
                 <div class="match-number">M97</div>
                 <div class="match-row ">
                     <span>Morocco</span>
-                    <small class="prob">2.2%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Brazil</span>
-                    <small class="prob">6.7%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Brazil</strong></div>
             </article>
@@ -1169,11 +1041,9 @@
                 <div class="match-number">M98</div>
                 <div class="match-row ">
                     <span>Uruguay</span>
-                    <small class="prob">0.8%</small>
                 </div>
                 <div class="match-row winner">
                     <span>United States</span>
-                    <small class="prob">2.0%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>United States</strong></div>
             </article>
@@ -1183,11 +1053,9 @@
                 <div class="match-number">M99</div>
                 <div class="match-row winner">
                     <span>France</span>
-                    <small class="prob">17.7%</small>
                 </div>
                 <div class="match-row ">
                     <span>Spain</span>
-                    <small class="prob">13.2%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>France</strong></div>
             </article>
@@ -1197,11 +1065,9 @@
                 <div class="match-number">M100</div>
                 <div class="match-row winner">
                     <span>Argentina</span>
-                    <small class="prob">9.3%</small>
                 </div>
                 <div class="match-row ">
                     <span>Belgium</span>
-                    <small class="prob">1.9%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Argentina</strong></div>
             </article>
@@ -1216,11 +1082,9 @@
                 <div class="match-number">M101</div>
                 <div class="match-row winner">
                     <span>Brazil</span>
-                    <small class="prob">6.7%</small>
                 </div>
                 <div class="match-row ">
                     <span>United States</span>
-                    <small class="prob">2.0%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Brazil</strong></div>
             </article>
@@ -1230,11 +1094,9 @@
                 <div class="match-number">M102</div>
                 <div class="match-row winner">
                     <span>France</span>
-                    <small class="prob">17.7%</small>
                 </div>
                 <div class="match-row ">
                     <span>Argentina</span>
-                    <small class="prob">9.3%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>France</strong></div>
             </article>
@@ -1249,11 +1111,9 @@
                 <div class="match-number">M103</div>
                 <div class="match-row ">
                     <span>United States</span>
-                    <small class="prob">2.0%</small>
                 </div>
                 <div class="match-row winner">
                     <span>Argentina</span>
-                    <small class="prob">9.3%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>Argentina</strong></div>
             </article>
@@ -1268,17 +1128,38 @@
                 <div class="match-number">M104</div>
                 <div class="match-row ">
                     <span>Brazil</span>
-                    <small class="prob">6.7%</small>
                 </div>
                 <div class="match-row winner">
                     <span>France</span>
-                    <small class="prob">17.7%</small>
                 </div>
                 <div class="winner-label">Winner: <strong>France</strong></div>
             </article>
         </div>
             </section>
         </div>
+
+        <section class="section-block explainer">
+            <h2>How this works</h2>
+            <p>
+                <strong>Qualifying third-place groups</strong> — After the group stage, the best third-placed team
+                from each of the 12 groups advances. Only 8 of the 12 third-place teams qualify for the Round of 32.
+                They are ranked by points, then goal difference, then goals scored. The 8 groups whose third-place
+                team ranks highest are the qualifying third-place groups, shown above as a sorted letter string
+                (e.g. <em>A, B, C, E, F, G, H, K</em>).
+            </p>
+            <p>
+                <strong>Third-place mapping combo</strong> — FIFA's Annex C defines exactly which slot in the
+                Round of 32 bracket each qualifying third-place team fills. The assignment depends on
+                <em>which combination</em> of groups provides the 8 third-place qualifiers. The combo string
+                (e.g. <em>ABCEFGHK</em>) is a lookup key into that table, and each third-place team is slotted
+                into the bracket accordingly.
+            </p>
+            <p>
+                <strong>Knockout winner selection</strong> — Each match winner is the team with the higher
+                vig-removed bookmaker probability of winning the entire tournament. Probabilities are computed
+                by averaging the implied win probability across bookmakers after normalising away the overround.
+            </p>
+        </section>
     </main>
 
     <footer></footer>
