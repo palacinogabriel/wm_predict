@@ -90,7 +90,14 @@
     }
     .match-row span { font-weight: 650; }
     .match-row .score { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
-    .match-row .pred-score { color: var(--orange); font-size: 0.78em; margin-left: 4px; opacity: 0.85; }
+    .match-row .pred-score { color: var(--orange); }
+    .score-pair { display: flex; gap: 14px; }
+    .score-pair .score { min-width: 1.2em; text-align: center; }
+    .score-col-headers {
+        display: flex; justify-content: flex-end; gap: 14px; padding: 0 12px;
+        font-size: 0.72rem; color: var(--muted); text-transform: uppercase;
+        letter-spacing: 0.05em; margin-bottom: 4px;
+    }
     .match-row.winner { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
     .match-row.predicted-winner { border-color: rgba(34,197,94,0.4); background: rgba(34,197,94,0.05); }
     .match-row.predicted-draw { border-color: rgba(249,115,22,0.35); background: rgba(249,115,22,0.05); }
@@ -111,7 +118,7 @@
 </style>
 </head>
 <body>
-    <div class="topbar">Last updated: 2026-06-21 20:18:55 CEST</div>
+    <div class="topbar">Last updated: 2026-06-21 20:21:55 CEST</div>
     <header>
         <h1>World Cup 2026 — Group Stage</h1>
         <p>Match results and projected final standings per group.</p>
@@ -287,21 +294,21 @@
                 </div>
             </article>
             <article class="match-card">
-                <div class="played-tag">Result</div>
+                <div class="score-col-headers"><span>Result</span><span style="color:var(--orange);">Predicted</span></div>
                 <div class="match-row ">
-                    <span>Scotland</span><span class="score">0<span class="pred-score">(0)</span></span>
+                    <span>Scotland</span><span class="score-pair"><span class="score">0</span><span class="score pred-score">0</span></span>
                 </div>
                 <div class="match-row winner">
-                    <span>Morocco</span><span class="score">1<span class="pred-score">(1)</span></span>
+                    <span>Morocco</span><span class="score-pair"><span class="score">1</span><span class="score pred-score">1</span></span>
                 </div>
             </article>
             <article class="match-card">
-                <div class="played-tag">Result</div>
+                <div class="score-col-headers"><span>Result</span><span style="color:var(--orange);">Predicted</span></div>
                 <div class="match-row winner">
-                    <span>Brazil</span><span class="score">3<span class="pred-score">(2)</span></span>
+                    <span>Brazil</span><span class="score-pair"><span class="score">3</span><span class="score pred-score">2</span></span>
                 </div>
                 <div class="match-row ">
-                    <span>Haiti</span><span class="score">0<span class="pred-score">(0)</span></span>
+                    <span>Haiti</span><span class="score-pair"><span class="score">0</span><span class="score pred-score">0</span></span>
                 </div>
             </article>
             <article class="match-card">
@@ -355,21 +362,21 @@
                 </div>
             </article>
             <article class="match-card">
-                <div class="played-tag">Result</div>
+                <div class="score-col-headers"><span>Result</span><span style="color:var(--orange);">Predicted</span></div>
                 <div class="match-row winner">
-                    <span>United States</span><span class="score">2<span class="pred-score">(1)</span></span>
+                    <span>United States</span><span class="score-pair"><span class="score">2</span><span class="score pred-score">1</span></span>
                 </div>
                 <div class="match-row ">
-                    <span>Australia</span><span class="score">0<span class="pred-score">(0)</span></span>
+                    <span>Australia</span><span class="score-pair"><span class="score">0</span><span class="score pred-score">0</span></span>
                 </div>
             </article>
             <article class="match-card">
-                <div class="played-tag">Result</div>
+                <div class="score-col-headers"><span>Result</span><span style="color:var(--orange);">Predicted</span></div>
                 <div class="match-row ">
-                    <span>Turkiye</span><span class="score">0<span class="pred-score">(1)</span></span>
+                    <span>Turkiye</span><span class="score-pair"><span class="score">0</span><span class="score pred-score">1</span></span>
                 </div>
                 <div class="match-row winner">
-                    <span>Paraguay</span><span class="score">1<span class="pred-score">(0)</span></span>
+                    <span>Paraguay</span><span class="score-pair"><span class="score">1</span><span class="score pred-score">0</span></span>
                 </div>
             </article>
             <article class="match-card">
@@ -423,21 +430,21 @@
                 </div>
             </article>
             <article class="match-card">
-                <div class="played-tag">Result</div>
+                <div class="score-col-headers"><span>Result</span><span style="color:var(--orange);">Predicted</span></div>
                 <div class="match-row winner">
-                    <span>Germany</span><span class="score">2<span class="pred-score">(2)</span></span>
+                    <span>Germany</span><span class="score-pair"><span class="score">2</span><span class="score pred-score">2</span></span>
                 </div>
                 <div class="match-row ">
-                    <span>Ivory Coast</span><span class="score">1<span class="pred-score">(0)</span></span>
+                    <span>Ivory Coast</span><span class="score-pair"><span class="score">1</span><span class="score pred-score">0</span></span>
                 </div>
             </article>
             <article class="match-card">
-                <div class="played-tag">Result</div>
+                <div class="score-col-headers"><span>Result</span><span style="color:var(--orange);">Predicted</span></div>
                 <div class="match-row ">
-                    <span>Ecuador</span><span class="score">0<span class="pred-score">(0)</span></span>
+                    <span>Ecuador</span><span class="score-pair"><span class="score">0</span><span class="score pred-score">0</span></span>
                 </div>
                 <div class="match-row ">
-                    <span>Curacao</span><span class="score">0<span class="pred-score">(2)</span></span>
+                    <span>Curacao</span><span class="score-pair"><span class="score">0</span><span class="score pred-score">2</span></span>
                 </div>
             </article>
             <article class="match-card">
@@ -491,21 +498,21 @@
                 </div>
             </article>
             <article class="match-card">
-                <div class="played-tag">Result</div>
+                <div class="score-col-headers"><span>Result</span><span style="color:var(--orange);">Predicted</span></div>
                 <div class="match-row winner">
-                    <span>Netherlands</span><span class="score">5<span class="pred-score">(1)</span></span>
+                    <span>Netherlands</span><span class="score-pair"><span class="score">5</span><span class="score pred-score">1</span></span>
                 </div>
                 <div class="match-row ">
-                    <span>Sweden</span><span class="score">1<span class="pred-score">(0)</span></span>
+                    <span>Sweden</span><span class="score-pair"><span class="score">1</span><span class="score pred-score">0</span></span>
                 </div>
             </article>
             <article class="match-card">
-                <div class="played-tag">Result</div>
+                <div class="score-col-headers"><span>Result</span><span style="color:var(--orange);">Predicted</span></div>
                 <div class="match-row ">
-                    <span>Tunisia</span><span class="score">0<span class="pred-score">(0)</span></span>
+                    <span>Tunisia</span><span class="score-pair"><span class="score">0</span><span class="score pred-score">0</span></span>
                 </div>
                 <div class="match-row winner">
-                    <span>Japan</span><span class="score">4<span class="pred-score">(2)</span></span>
+                    <span>Japan</span><span class="score-pair"><span class="score">4</span><span class="score pred-score">2</span></span>
                 </div>
             </article>
             <article class="match-card">
@@ -627,12 +634,12 @@
                 </div>
             </article>
             <article class="match-card">
-                <div class="played-tag">Result</div>
+                <div class="score-col-headers"><span>Result</span><span style="color:var(--orange);">Predicted</span></div>
                 <div class="match-row winner">
-                    <span>Spain</span><span class="score">4<span class="pred-score">(3)</span></span>
+                    <span>Spain</span><span class="score-pair"><span class="score">4</span><span class="score pred-score">3</span></span>
                 </div>
                 <div class="match-row ">
-                    <span>Saudi Arabia</span><span class="score">0<span class="pred-score">(0)</span></span>
+                    <span>Saudi Arabia</span><span class="score-pair"><span class="score">0</span><span class="score pred-score">0</span></span>
                 </div>
             </article>
             <article class="match-card">
